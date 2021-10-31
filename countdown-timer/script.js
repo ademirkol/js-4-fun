@@ -1,0 +1,29 @@
+const newBirthDay = "18 Jun 2022";
+const daysEl = document.getElementById("days");
+const hoursEl = document.getElementById("hours");
+const minsEl = document.getElementById("mins");
+const secondsEl = document.getElementById("seconds");
+
+function countdown() {
+  const newBirthDayDate = new Date(newBirthDay);
+  const currentDate = new Date();
+
+  const totalSeconds = (newBirthDayDate - currentDate) / 1000;
+  const days = Math.floor(totalSeconds / 3600 / 24);
+  const hours = Math.floor(totalSeconds / 3600) % 24;
+  const mins = Math.floor(totalSeconds / 60) % 60;
+  const seconds = Math.floor(totalSeconds) % 60;
+
+  daysEl.innerHTML = days;
+  hoursEl.innerHTML = hours;
+  minsEl.innerHTML = mins;
+  secondsEl.innerHTML = seconds;
+}
+
+function formatTime(time) {
+  return time < 10 ? `0${time}` : time;
+}
+
+//initialCall
+countdown();
+setInterval(countdown, 1000);
